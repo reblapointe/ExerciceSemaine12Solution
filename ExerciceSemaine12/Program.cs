@@ -44,6 +44,26 @@
             return diagonalePrincipale == cible && diagonaleSecondaire == cible;
         }
 
+        static void ImprimerCarreMagique(int[,] grille)
+        {
+            for (int i = 0; i < grille.GetLength(0); i++)
+            {
+                for (int j = 0; j < grille.GetLength(1); j++)
+                {
+                    Console.Write((grille[i, j] + "").PadLeft(3));
+                }
+                Console.WriteLine();
+            }
+            if (EstMagique(grille))
+            {
+                Console.WriteLine("Magique");
+            }
+            else
+            {
+                Console.WriteLine("Pas magique");
+            }
+            Console.WriteLine();
+        }
         static void Main(string[] args)
         {
             char[,] carte =
@@ -60,16 +80,17 @@
             AfficherCarte(carte);
 
             int[,] carre1 = {
-                { 16, 3, 2, 13 },
-                { 5, 10, 11, 8 },
-                { 9, 6, 7, 12 },
-                { 4, 15, 14, 1 }
+                { 16,  3,  2, 13 },
+                {  5, 10, 11,  8 },
+                {  9,  6,  7, 12 },
+                {  4, 15, 14,  1 }
             };
+            ImprimerCarreMagique(carre1);
+
             int[,] carre2 = { { 8, 8, 8 }, { 8, 8, 8 }, { 8, 8, 8 } };
-            int[,] carre3 = { { 4, 9, 2 }, { 3, 5, 7 }, { 8, 1, 6 } };
-            Console.WriteLine("carre 1 " + (EstMagique(carre1) ? "est" : "n'est pas") + " magique");
-            Console.WriteLine("carre 2 " + (EstMagique(carre2) ? "est" : "n'est pas") + " magique");
-            Console.WriteLine("carre 3 " + (EstMagique(carre3) ? "est" : "n'est pas") + " magique");
+            ImprimerCarreMagique(carre2);
+
+            ImprimerCarreMagique(new int[,] { { 4, 9, 2 }, { 3, 5, 7 }, { 8, 1, 6 } });
         }
     }
 }
